@@ -1,4 +1,4 @@
-# 1. Оисание
+# 1. Description
 This repository contains a base class and interface for the Command pattern. It also includes classes for sequential and parallel execution of commands. The Command pattern simplifies request management by encapsulating them as objects. Using a command queue allows you to build a sequence of requests, helping to avoid callback hell. This is particularly useful for creating complex sequences of actions, such as effects and animations, ensuring cleaner and more manageable code.
 
 # 2. How to use
