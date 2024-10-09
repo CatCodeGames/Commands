@@ -7,6 +7,12 @@ namespace CatCode.Commands
         private readonly Action<Action> _onExecute;
         private readonly Action _onStop;
 
+        public DynamicCommand(Action<Action> onExecute, Action onStop)
+        {
+            _onExecute = onExecute;
+            _onStop = onStop;
+        }
+
         protected override void OnExecute()
         {
             if (_onExecute == null)
