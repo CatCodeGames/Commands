@@ -37,18 +37,14 @@ namespace CatCode.Commands
             { }
             finally
             {
-                _cts.Dispose();
+                _cts?.Dispose();
                 _cts = null;
             }
         }
 
         private void Cancel()
-        {
-            if (_cts == null)
-                return;
-            _cts.Cancel();
-            _cts.Dispose();
-            _cts = null;
+        {         
+            _cts?.Cancel();
         }
     }
 }
