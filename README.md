@@ -1,5 +1,6 @@
 # 1. Description
 This repository contains a base class and interface for the Command pattern. It also includes classes for sequential and parallel execution of commands. The Command pattern simplifies request management by encapsulating them as objects. Using a command queue allows you to build a sequence of requests, helping to avoid callback hell. This is particularly useful for creating complex sequences of actions, such as effects and animations, ensuring cleaner and more manageable code.
+[Tutorial on YouTube](https://www.youtube.com/watch?v=WAFlLeRxbFE) 
 
 # 2. How to use
 ### 2.1 Creating a Command
@@ -93,6 +94,7 @@ queue.Execute();
 
 # 1. Описание 
 Этот репозиторий содержит базовый класс и интерфейс для паттерна “Команда”. В нем также представлены классы для последовательного и одновременного выполнения команд. Паттерн “Команда” упрощает управление запросами, инкапсулируя их в виде объектов. Использование очереди команд позволяет набирать последовательность запросов, помогая избежать “callback hell”. Это особенно полезно для создания сложных последовательностей действий, таких как эффекты и анимации, обеспечивая более чистый и управляемый код.
+[Видео-туториал на YouTube](https://www.youtube.com/watch?v=WAFlLeRxbFE) 
 
 # 2. Использование
 ### 2.1 Создание команды
