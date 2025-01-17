@@ -2,6 +2,14 @@
 
 namespace CatCode.Commands
 {
+    /// <summary>
+    /// An abstract command that implements the core logic for execution and stopping, as well as event invocation.
+    /// Used as a base class for creating specific commands.
+    /// </summary>
+    /// <summary xml:lang="ru">
+    /// Абстрактная команда, реализующая основную логику запуска и остановки, а также вызов событий.
+    /// Используется как базовый класс для создания конкретных команд.
+    /// </summary>
     public abstract class Command : ICommand
     {
         private CommandState _state;

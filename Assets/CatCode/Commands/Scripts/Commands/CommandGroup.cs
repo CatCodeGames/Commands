@@ -2,6 +2,12 @@
 
 namespace CatCode.Commands
 {
+    /// <summary>
+    /// A command that initiates multiple commands concurrently and waits for all of them to complete.    
+    /// </summary>
+    /// <summary xml:lang="ru">
+    /// Команда, которая запускает несколько команд одновременно и ожидает их полного завершения.    
+    /// </summary>
     public sealed class CommandGroup : Command
     {
         private readonly List<ICommand> _commands = new();

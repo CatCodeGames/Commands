@@ -2,6 +2,14 @@
 
 namespace CatCode.Commands
 {
+    /// <summary>
+    /// A command that creates and executes another command just before its execution.
+    /// Useful when command creation needs to be deferred until the moment of execution.
+    /// </summary>
+    /// <summary xml:lang="ru">
+    /// Команда, которая создаёт другую команду перед её выполнением.
+    /// Используется, когда нужно создать команду непосредственно перед её выполнением.
+    /// </summary>
     public sealed class LazyCommand : Command
     {
         private ICommand _command;

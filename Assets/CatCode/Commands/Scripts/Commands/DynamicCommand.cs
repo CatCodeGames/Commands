@@ -2,6 +2,14 @@
 
 namespace CatCode.Commands
 {
+    /// <summary>
+    /// A command with behavior defined by execution and stopping delegates.
+    /// Allows dynamically specifying the execution and stopping logic of the command.
+    /// </summary>
+    /// <summary xml:lang="ru">
+    /// Команда с поведением, заданным делегатами выполнения и остановки.
+    /// Позволяет динамически задавать логику выполнения и остановки команды.
+    /// </summary>
     public sealed class DynamicCommand : Command
     {
         private readonly Action<Action> _onExecute;

@@ -9,8 +9,18 @@ namespace CatCode.Commands
         Next
     }
 
+    /// <summary>
+    /// A command queue that sequentially executes commands.
+    /// Allows adding new commands to the queue during execution.    
+    /// </summary>
+    /// <summary xml:lang="ru">
+    /// Очередь команд, которая последовательно выполняет команды.
+    /// Позволяет добавлять новые команды в очередь во время выполнения.    
+    /// </summary>
     public class CommandQueue : ICommand
     {
+        private bool _storeFinishedCommands = false;
+        private readonly List<ICommand> _finishedCommands = new();
         private readonly LinkedList<ICommand> _commands = new();
 
         private CommandState _state;
@@ -23,15 +33,39 @@ namespace CatCode.Commands
         private ICommand _executingCommand = null;
 
         public CommandState State => _state;
+
+        public ICommand ExecutingCommand => _executingCommand;
+
         public bool IsFinished => _state == CommandState.Finished;
 
-        public bool ExecuteOnAdd { get => _executeOnAdd; set => _executeOnAdd = value; }
+        public bool ExecuteOnAdd
+        {
+            get => _executeOnAdd;
+            set => _executeOnAdd = value;
+        }
+
+        public bool StoreFinishedCommands => _storeFinishedCommands;
+
 
         public CommandQueue SetExecuteOnAdd(bool value)
         {
             _executeOnAdd = value;
             return this;
         }
+
+        public CommandQueue SetStoreFinishedCommands(bool value)
+        {
+            _storeFinishedCommands = value;
+            return this;
+        }
+
+
+        public IEnumerable<ICommand> GetUnfinishedCommads()
+            => _commands;
+
+        public IEnumerable<ICommand> GetFinishedCommands()
+            => _finishedCommands;
+
 
         public CommandQueue Add(ICommand command, CommandAddMode mode = CommandAddMode.Last)
         {
@@ -61,7 +95,7 @@ namespace CatCode.Commands
             else if (_executingCommand == null && _commands.Count == 0)
             {
                 _state = CommandState.Finished;
-                Finished?.Invoke(); 
+                Finished?.Invoke();
                 return;
             }
 
@@ -87,9 +121,12 @@ namespace CatCode.Commands
             Stopped?.Invoke();
         }
 
+
         private void OnCommandFinished()
         {
             _executingCommand.Finished -= OnCommandFinished;
+            if (_storeFinishedCommands)
+                _finishedCommands.Add(_executingCommand);
             _executingCommand = null;
             Execute();
         }
