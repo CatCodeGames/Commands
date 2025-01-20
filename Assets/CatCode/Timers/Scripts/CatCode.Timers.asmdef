@@ -1,9 +1,8 @@
 {
-    "name": "CatCode.Commands",
+    "name": "CatCode.Timers",
     "rootNamespace": "",
     "references": [
-        "GUID:a1953a3df6819694e8bdcd9e3f597d95",
-        "GUID:a2ef62b64c0ba2f49a0da8a1ebb11a06"
+        "GUID:a1953a3df6819694e8bdcd9e3f597d95"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
